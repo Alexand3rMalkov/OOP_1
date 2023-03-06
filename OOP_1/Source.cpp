@@ -13,21 +13,17 @@ int main()
 	int action, z;
 	double a, b, eps, x;
 	while (1) {
-		cout << "\nВыберите действие:\n"
-			"1) Задача 1.\n"
-			"2) Задача 2.\n"
-			"3) Задача 4.\n" << endl;
+		cout << "Выберите действие:" << endl << "1) Задача 1." << endl << "2) Задача 2." << endl << "3) Задача 4." << endl << "0) Выход из программы." << endl;
 		cin >> action;
 		switch (action) {
+		case 0:
+			return -1;
 		case 1:
-			cout << "Введите значение a:\n";
+			cout << "Введите значение a: ";
 			cin >> a;
-			cout << "Введите значение b:\n";
+			cout << "Введите значение b: ";
 			cin >> b;
-			cout << "Дано алгебраическое выражение: \n"
-			"\n7,8*b+pow(sin, 2)*(8,5*pow(a,2)-2*a*b+4,7*b)\n"
-			"-----------------------------------------------------\n"
-			"sqrt((2,6+(1,3*PI-cos*(pow(b,2) - a)/18,87*b+7,85*a))\n" << endl;
+			cout << "Дано алгебраическое выражение: " << endl << "7,8*b+pow(sin, 2)*(8,5*pow(a,2)-2*a*b+4,7*b)" << endl << "-----------------------------------------------------" << endl << "sqrt((2,6+(1,3*PI-cos*(pow(b,2) - a)/18,87*b+7,85*a))" << endl;
 			printf("\nЗначение алгебраического выражения = %lf", (7.8 * b + (pow((sin(8.5 * pow(a, 2) - 2 * a * b + 4.7 * b)), 2)) / sqrt((2.6 + (1.3 * PI - (cos(pow(b, 2) - a)) / 18.87 * b + 7.85 * a)))));
 			break;
 			system("pause");
@@ -35,9 +31,9 @@ int main()
 				eps = 0.001, x = 0.5;
 				cout << "F(" << x << ") = " << F(x, eps) << endl;
 				x = PI / 3;
-				cout << "F(pi/3) = " << F(x, eps) << endl;
+				cout << "F(PI/3) = " << F(x, eps) << endl;
 				x = 1;
-				cout << "F(" << x << ") = " << F(x, eps) << "\n";
+				cout << "F(" << x << ") = " << F(x, eps) << endl;
 				
 				system("pause");
 			break;
@@ -45,14 +41,13 @@ int main()
 			cout << "Введите число для проверки: ";
 			cin >> z;
 			if ((z > -6) && (z < -2))
-				cout << "Число проходит проверку.\n";
-			else cout << "Число не проходит проверку.\n";
+				cout << "Число проходит проверку." << endl;
+			else cout << "Число не проходит проверку." << endl;
 			system("pause");
 			break;
 		}
 	}
 }
-
 double F(double x, double eps)
 {
 	double r = 0, prev = 0, u = cos(x), res = u;
