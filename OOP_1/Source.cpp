@@ -4,11 +4,14 @@
 #include <cstdlib>
 #define PI   3.14159265358979323846
 using namespace std;
+
+double F(double x, double eps);
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
 	int action, z;
-	double a, b;
+	double a, b, eps, x;
 	while (1) {
 		cout << "\nВыберите действие:\n"
 			"1) Задача 1.\n"
@@ -29,15 +32,39 @@ int main()
 			break;
 			system("pause");
 		case 2:
+				eps = 0.001, x = 0.5;
+				cout << "F(" << x << ") = " << F(x, eps) << endl;
+				x = PI / 3;
+				cout << "F(pi/3) = " << F(x, eps) << endl;
+				x = 1;
+				cout << "F(" << x << ") = " << F(x, eps) << "\n";
+				
+				system("pause");
 			break;
 		case 3:
 			cout << "Введите число для проверки: ";
 			cin >> z;
 			if ((z > -6) && (z < -2))
 				cout << "Число проходит проверку.\n";
-			else cout << "Число не проходит проверку.";
+			else cout << "Число не проходит проверку.\n";
 			system("pause");
 			break;
 		}
 	}
+}
+
+double F(double x, double eps)
+{
+	double r = 0, prev = 0, u = cos(x), res = u;
+	int n = 1, sgn = 1;
+	while (r < -eps || eps < r)
+	{
+		prev = u;
+		n++;
+		sgn = -sgn;
+		u = sgn * cos(n * x) / n;
+		r = u - prev;
+		res += u;
+	}
+	return res;
 }
